@@ -1,6 +1,7 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { calculateEstimatedTimeToRead } from 'src/helpers/time.format';
 import { ContentProps } from './content.props';
 
 const Content = ({ blogs }: ContentProps) => {
@@ -38,7 +39,8 @@ const Content = ({ blogs }: ContentProps) => {
 							<Typography variant='body2'>{item.author.name}</Typography>
 							<Box color={'gray'} sx={{ opacity: '.6' }}>
 								{' '}
-								{format(new Date(item.createdAt), 'dd MMM, yyyy')}
+								{format(new Date(item.createdAt), 'dd MMM, yyyy')} &#x2022;{' '}
+								{calculateEstimatedTimeToRead(item.description.text)}min read
 							</Box>
 						</Box>
 					</Box>
