@@ -15,6 +15,7 @@ import {
 	Toolbar,
 	Typography,
 } from '@mui/material';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { navItems } from 'src/config/constants';
 
@@ -24,6 +25,7 @@ interface Props {
 
 const Navbar = ({ window }: Props) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const router = useRouter();
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(prevState => !prevState);
@@ -90,7 +92,11 @@ const Navbar = ({ window }: Props) => {
 
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{navItems.map(item => (
-							<Button key={item.route} sx={{ color: '#fff' }}>
+							<Button
+								key={item.route}
+								sx={{ color: '#fff' }}
+								onClick={() => router.push(item.route)}
+							>
 								{item.label}
 							</Button>
 						))}
