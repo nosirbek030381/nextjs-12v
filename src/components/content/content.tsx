@@ -1,10 +1,13 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { calculateEstimatedTimeToRead } from 'src/helpers/time.format';
 import { ContentProps } from './content.props';
 
 const Content = ({ blogs }: ContentProps) => {
+	const router = useRouter();
+
 	return (
 		<Box width={{ xs: '100%', md: '70%' }}>
 			{blogs.map(item => (
@@ -16,7 +19,9 @@ const Content = ({ blogs }: ContentProps) => {
 						mt: '20px',
 						borderRadius: '8px',
 						boxShadow: '0px 8px 16px rgba(255, 255, 255, .1)',
+						cursor: 'pointer',
 					}}
+					onClick={() => router.push(`/blog/${item.slug}`)}
 				>
 					<Box position={'relative'} width={'100%'} height={{ xs: '30vh', md: '50vh' }}>
 						<Image

@@ -1,11 +1,13 @@
 import { Avatar, Box, Button, Divider, Typography } from '@mui/material';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import { SidebarProps } from './sidebar.props';
 
 const Sidebar = ({ latestBlog, categories }: SidebarProps) => {
-	console.log(categories);
+	const router = useRouter();
+
 	return (
 		<Box width={{ xs: '100%', md: '30%' }}>
 			<Box position={'sticky'} top={'110px'} sx={{ transition: 'all .3s ease' }}>
@@ -13,7 +15,12 @@ const Sidebar = ({ latestBlog, categories }: SidebarProps) => {
 					<Typography variant='h5'>Latest blog</Typography>
 					<Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
 						{latestBlog.map(item => (
-							<Box key={item.id} mt={'20px'}>
+							<Box
+								key={item.id}
+								mt={'20px'}
+								sx={{ cursor: 'pointer' }}
+								onClick={() => router.push(`/blog/${item.slug}`)}
+							>
 								<Box sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
 									<Image
 										src={item.image.url}

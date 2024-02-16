@@ -1,12 +1,15 @@
 import { Avatar, Box, Typography } from '@mui/material';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { calculateEstimatedTimeToRead } from 'src/helpers/time.format';
 import { HeroProps } from './hero.props';
 
 const Hero = ({ blogs }: HeroProps) => {
+	const router = useRouter();
+
 	return (
 		<Box width={'100%'} height={'70vh'} sx={{ backgroundColor: 'crimson' }}>
 			<Carousel
@@ -18,7 +21,11 @@ const Hero = ({ blogs }: HeroProps) => {
 				}}
 			>
 				{blogs.map(item => (
-					<Box key={item.id}>
+					<Box
+						key={item.id}
+						sx={{ cursor: 'pointer' }}
+						onClick={() => router.push(`/blog/${item.slug}`)}
+					>
 						<Box sx={{ position: 'relative', width: '100%', height: '70vh' }}>
 							<Image
 								src={item.image.url}
