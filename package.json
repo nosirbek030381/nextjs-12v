@@ -17,6 +17,8 @@
     "@mui/styled-engine-sc": "^5.11.11",
     "caniuse-lite": "^1.0.30001587",
     "date-fns": "^2.29.3",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
