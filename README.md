@@ -31,3 +31,15 @@ https://blogs.llibrarynetbuilder.uz
 - Graphql
 - SEO
 - SSR
+
+
+## Download project
+
+https://github.com/nosirbek030381/nextjs-12v/archive/refs/heads/main.zip
+
+Install:
+```bash
+yarn install
+# or 
+yarn dev
+```
